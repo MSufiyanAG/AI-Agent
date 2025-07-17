@@ -1,0 +1,8 @@
+services:
+  app: # custome key name
+    # image: python:alpine3.22
+    
+    ports:
+      - 8000:8000
+      - 3000:8000
+    command: python -m http.server 8000
