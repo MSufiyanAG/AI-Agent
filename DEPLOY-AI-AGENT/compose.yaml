@@ -1,8 +1,34 @@
 services:
-  app: # custome key name
+  backend: # custome key name
     # image: python:alpine3.22
-    
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8000
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    environment:
+      - PORT=8000
+    env_file:
+      - .env.sample
+
+    volumes:
+      - ./backend/src:/app
+    develop:
+      watch:
+        - action: rebuild 
+          path: backend/requirements.txt
+        - action: rebuild 
+          path: backend/Dockerfile
+        - action: syrestartnc
+          path: backend/src
+  static_html: # custome key name
+    # image: python:alpine3.22
+    build:
+      context: ./static_html
+      dockerfile: static.Dockerfile
     ports:
       - 8000:8000
-      - 3000:8000
     command: python -m http.server 8000
+    volumes:
+      - ./static_html/src:/app
