@@ -1,5 +1,6 @@
 services:
   backend: # custome key name
+  
     # image: python:alpine3.22
     build:
       context: ./backend
@@ -14,21 +15,43 @@ services:
 
     volumes:
       - ./backend/src:/app
+    depends_on:
+      - db_service
     develop:
       watch:
         - action: rebuild 
           path: backend/requirements.txt
         - action: rebuild 
           path: backend/Dockerfile
-        - action: syrestartnc
+        - action: restart
           path: backend/src
-  static_html: # custome key name
-    # image: python:alpine3.22
-    build:
-      context: ./static_html
-      dockerfile: static.Dockerfile
+  
+#db_url = postgresql+psycopg://username:password@dbhost:dbport/dbname
+#DATBASE_URL=postgresql+psycopg://dbuser:db-password@db_service:5432/mydb
+
+  db_service:
+    image: postgres:17.5
     ports:
-      - 8000:8000
-    command: python -m http.server 8000
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=db-password
+      - POSTGRES_DB=mydb
+    # env_file:
+    #   - .env.sample-db
     volumes:
-      - ./static_html/src:/app
+      - dc_managed_db_volume:/var/lib/postgresql/data
+
+  # static_html: # custome key name 
+  #   # image: python:alpine3.22
+  #   build:
+  #     context: ./static_html
+  #     dockerfile: static.Dockerfile
+  #   ports:
+  #     - 8000:8000
+  #   command: python -m http.server 8000
+  #   volumes:
+  #     - ./static_html/src:/app
+
+volumes:
+  dc_managed_db_volume: 
