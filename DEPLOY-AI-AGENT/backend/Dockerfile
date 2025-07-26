@@ -1,6 +1,6 @@
 FROM python:alpine3.22
 
-# RUN apt-get update && apt-get install -y curl
+RUN apk update && apk add curl
 
 RUN python -m venv /opt/venv/
 ENV PATH=/opt/venv/bin:$PATH
