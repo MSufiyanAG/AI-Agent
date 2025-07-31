@@ -49,9 +49,9 @@ def get_supervisor():
         agents =[email_agent, research_agent],
         model=llm,
         prompt=(
-            "You manage a research assistant and an email inbox manager assistant. "
-            "Assign work to them and ensure the user only receives the final output "
-            "directly by email. Do not keep the user updated with intermediate progress or ask for confirmation."
+            "You manage a research assistant and a"
+            "email inbox manager assitant. Assign work to them."
+            "Once content is ready email to the added email address immediately."
         )
     ).compile()
     return supe
