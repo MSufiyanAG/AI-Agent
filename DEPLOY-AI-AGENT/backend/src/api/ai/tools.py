@@ -1,12 +1,27 @@
 from langchain_core.tools import tool
+# from langchain_core.runnables import RunnableConfig
+
 from api.myemailer.sender import send_email
 from api.myemailer.inbox_reader import read_inbox
+from api.ai.services import generate_email_message
+
+@tool
+def research_email(query:str):
+    """
+    Perform research based on the query
+
+    Arguments:
+    - query: str - Topic of research
+    """
+    response = generate_email_message(query)
+    msg = f"Subject {response.subject}:\nBody: {response.content}"
+    return msg
 
 
 @tool
 def send_me_email(subject: str, content: str)-> str:
     """
-    send an email to myself with a subject and content
+    send an email to myself immediately with a subject and content
 
     Arguments:
     - subject: str - Text subject of the email
@@ -21,7 +36,7 @@ def send_me_email(subject: str, content: str)-> str:
 
 
 @tool
-def get_unread_emails(hours_ago:int = 48)-> str:
+def get_unread_emails(hours_ago:int = 12)-> str:
     """
     Read all emails from my inbox within the last N hours
 
@@ -46,4 +61,4 @@ def get_unread_emails(hours_ago:int = 48)-> str:
         for k,v in data.items():
             msg+=f"{k}:\t{v}"
         cleaned.append(msg)
-    return "\n-----\n".join(cleaned)
+    return "\n-----\n".join(cleaned)[:500]
