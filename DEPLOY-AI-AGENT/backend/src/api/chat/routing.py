@@ -33,7 +33,7 @@ def chat_list_messages(session: Session = Depends(get_session)):
 
 # curl.exe -X POST -d "{\`"message\`": \`"Research why snow doesnt melt for days after snowfall and email me the results\`"}" -H "Content-Type: application/json" http://localhost:8080/api/chats/
 
-
+# curl.exe -X POST -d "{\`"message\`": \`"Research why snow doesnt melt for days after snowfall and email me the results\`"}" -H "Content-Type: application/json" https://ai-agent-production-ff71.up.railway.app/api/chats/
 @router.post("/", response_model = SupervisorMessageSchema)
 def chat_create_message(
     payload:ChatMessagePayload,
