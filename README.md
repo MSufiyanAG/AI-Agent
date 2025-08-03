@@ -1,10 +1,3 @@
-https://github.com/user-attachments/assets/b772042a-764a-441b-af0d-86bdbdf8a5e9
-
-![image.png](attachment:2045cf39-cdb6-4530-877c-7d2fa16810c8:image.png)
-
-<img width="1082" height="798" alt="drawing_arch" src="https://github.com/user-attachments/assets/22c386d4-8133-495d-bff9-ceafe6dc396f" />
-
-
 # DEPLOY-AI-AGENT Backend — Setup & Deployment Guide
 
 Follow these steps to deploy your backend using GitHub, Docker, and Railway, and make it live with a database and environment configuration.
@@ -53,3 +46,9 @@ Follow these steps to deploy your backend using GitHub, Docker, and Railway, and
 ---
 
 For any issues, check your deployment logs and verify environment variables and file paths. Happy coding! 🚀
+
+https://github.com/user-attachments/assets/b772042a-764a-441b-af0d-86bdbdf8a5e9
+
+![image.png](attachment:2045cf39-cdb6-4530-877c-7d2fa16810c8:image.png)
+
+<img width="1082" height="798" alt="drawing_arch" src="https://github.com/user-attachments/assets/22c386d4-8133-495d-bff9-ceafe6dc396f" />
