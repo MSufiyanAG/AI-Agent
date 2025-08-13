@@ -4,9 +4,8 @@ Follow these steps to deploy your backend using GitHub, Docker, and Railway, and
 
 ---
 
-1. **Push Latest Code**
-   - Ensure your backend code is up to date, with a proper `Dockerfile`.
-   - Commit and push the latest changes to your GitHub repository.
+1. **Fork the Repository**
+   - Create a copy of this project in your own GitHub account to customize and deploy.
 
 2. **Connect to Railway**
    - In [Railway](https://railway.app), create or select your project.
